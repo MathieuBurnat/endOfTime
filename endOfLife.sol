@@ -20,6 +20,7 @@ contract TimerContract {
         owner = payable(msg.sender);
         totalAmount = msg.value; // Store sent Ether
         
+        // Means now + countdown in minutes
         endTime = block.timestamp + (countdown * 1 minutes);
     }
 
@@ -39,9 +40,19 @@ contract TimerContract {
         emit EndOfLife("Contract has ended.");
     }
 
-    function renderLog() public view{
+    function getTimerOutput() public view{
         console.log("End of time is: ", endTime);
         console.log("Timestamp is: ", block.timestamp);
+    }
+
+    // Returns remaining time in seconds, or 0 if timer has expired
+    function getTimeLeft() public view returns (uint256) {
+        if (block.timestamp >= endTime) {
+            return 0; // Timer has expired
+        }
+        uint256 remaining = endTime - block.timestamp;
+        console.log("The time left is: ", remaining);
+        return remaining;
     }
 
     // Function to check contract balance
