@@ -10,6 +10,13 @@ contract TimerContract {
 
     // init total amount (0 eth by default)
     uint totalAmount = 0 ether;
+
+    // Create event "End of the contract"
+    // Return current time and the owner's balance
+    Event EndOfTheContract(){
+        
+    }
+
     // Parameters, amount, owner, timer countdown (in minutes) 
     constructor(uint256 amount, address payable owner, uint256 countdown) internal payable {
         require (amount > 0, "Sorry, the amount must be greater than 0");
