@@ -39,6 +39,11 @@ contract TimerContract {
         emit EndOfLife("Contract has ended.");
     }
 
+    function renderLog() public view{
+        console.log("End of time is: ", endTime);
+        console.log("Timestamp is: ", block.timestamp);
+    }
+
     // Function to check contract balance
     function getBalance() external view returns (uint256) {
         return address(this).balance;
